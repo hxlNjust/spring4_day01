@@ -13,6 +13,7 @@ public class SpringDemo1 {
 		UserService userService = new UserServiceImpl();
 		userService.save();
 		System.out.println("day01_right");
+		System.out.println("day01_left");
 	}
 
 	@SuppressWarnings("resource")
