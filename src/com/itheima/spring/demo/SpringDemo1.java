@@ -14,6 +14,8 @@ public class SpringDemo1 {
 		userService.save();
 		System.out.println("day01_right");
 		System.out.println("day01_left");
+		System.out.println("hotfix...by test");
+		
 	}
 
 	@SuppressWarnings("resource")
