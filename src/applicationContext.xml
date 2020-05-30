@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- <bean id="userService" class="com.itheima.spring.demo.UserServiceHibernateImpl"> 
+		<property name="name" value="李东"></property> </bean> -->
+
+	<!-- <bean id="customerDao" class="com.itheima.spring.demo2.CustomerDaoImpl" 
+		init-method="init" destroy-method="destory" scope="prototype"></bean> -->
+
+	<!-- <bean id="bean1" class="com.itheima.spring.demo3.Bean1"></bean> -->
+	<!-- <bean id="bean2" factory-method="getBean2" class="com.itheima.spring.demo3.Bean2Factory"></bean> -->
+
+	<!-- 先创建工厂 -->
+	<!-- <bean id="bean3Factory" class="com.itheima.spring.demo3.Bean3Factory"></bean> -->
+	<!-- <bean id="bean3" factory-bean="bean3Factory" factory-method="getBean3"></bean> -->
+
+	<!-- 构造函数创建对象 -->
+	<bean id="car" class="com.itheima.spring.demo5.Car">
+		<constructor-arg name="name" value="奥迪"></constructor-arg>
+		<constructor-arg name="price" value="400000"></constructor-arg>
+	</bean>
+
+	<!-- 通过set方法注入 -->
+	<bean id="car2" class="com.itheima.spring.demo5.Car">
+		<property name="name" value="宝马"></property>
+		<property name="price" value="800000"></property>
+	</bean>
+
+	<bean id="car3" class="com.itheima.spring.demo5.Car" p:name="无语"
+		p:price="50000"></bean>
+	<bean id="user3" class="com.itheima.spring.demo5.User" p:name="王五"
+		p:car-ref="car3"></bean>
+	<bean id="car4" class="com.itheima.spring.demo5.Car"></bean>
+
+	<!-- 通过set方法注入对象类 -->
+	<bean id="user" class="com.itheima.spring.demo5.User">
+		<property name="name" value="张三"></property>
+		<property name="car" ref="car2"></property>
+	</bean>
+
+	<!-- 通过构造函数进行注入参数 -->
+	<bean id="user2" class="com.itheima.spring.demo5.User">
+		<constructor-arg name="name" value="李四"></constructor-arg>
+		<constructor-arg name="car" ref="car"></constructor-arg>
+	</bean>
+
+	<!-- 通过SpEL进行参数注入 思想是：通过#标签进行调用对象的参数，方法等 -->
+	<bean id="car5" class="com.itheima.spring.demo5.Car">
+		<property name="name" value="#{'凯迪拉克'}"></property>
+		<property name="price" value="#{66666}"></property>
+	</bean>
+
+	<bean id="user5" class="com.itheima.spring.demo5.User">
+		<property name="name" value="#{'观海'}"></property>
+		<property name="car" value="#{car5}"></property>
+	</bean>
+
+	<!-- SpEl最重要的是可以进行获取参数 -->
+	<bean id="carInfo" class="com.itheima.spring.demo5.CarInfo"></bean>
+	<bean id="car6" class="com.itheima.spring.demo5.Car">
+		<property name="name" value="#{carInfo.getName()}"></property>
+		<property name="price" value="#{carInfo.calculatePrice()}"></property>
+	</bean>
+	<import resource="applicationContext2.xml" />
+</beans>

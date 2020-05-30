@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="collectionBean" class="com.itheima.spring.demo4.CollectionBean">
+		<!-- 当类型是字符串数组的时候可以放置list参数 -->
+		<property name="strs">
+			<list>
+				<value>str1</value>
+				<value>str2</value>
+				<value>str3</value>
+				<value>str4</value>
+			</list>
+		</property>
+
+		<property name="list">
+			<list>
+				<value>list1</value>
+				<value>list2</value>
+				<value>list3</value>
+				<value>list4</value>
+			</list>
+		</property>
+
+		<property name="sets">
+			<set>
+				<value>set1</value>
+				<value>set2</value>
+				<value>set3</value>
+				<value>set4</value>
+			</set>
+		</property>
+
+		<property name="map">
+			<map>
+				<entry key="aaa" value="111"></entry>
+				<entry key="bbb" value="222"></entry>
+				<entry key="ccc" value="333"></entry>
+				<entry key="ddd" value="444"></entry>
+			</map>
+		</property>
+	</bean>
+   
+ </beans>
